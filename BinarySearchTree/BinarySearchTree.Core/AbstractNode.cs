@@ -34,5 +34,29 @@
         {
             return RightChild == null || RightChild.Parent.Id != Id;
         }
+
+        /// <summary>
+        /// Get the minimum of the sub-tree with this node as root
+        /// O(h) - h is the height of the sub tree
+        /// </summary>
+        public AbstractNode GetMinimum()
+        {
+            var temp = this;
+            while (temp.HasALeftChild())
+                temp = temp.LeftChild;
+            return temp;
+        }
+
+        /// <summary>
+        /// Get the maximum of the sub-tree with this node as root
+        /// O(h) - h is the height of the sub tree
+        /// </summary>
+        public AbstractNode GetMax()
+        {
+            var temp = this;
+            while (temp.HasARightChild())
+                temp = temp.RightChild;
+            return temp;
+        }
     }
 }

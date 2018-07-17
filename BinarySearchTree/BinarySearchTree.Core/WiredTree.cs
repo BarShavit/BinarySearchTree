@@ -44,5 +44,29 @@
                     newNodeParent.RightChild = node;
             }
         }
+
+        /// <summary>
+        /// Get the minimum of the tree.
+        /// Using the method in the root so it's O(h)
+        /// </summary>
+        /// <returns>minimum</returns>
+        public T GetMinimum()
+        {
+            if (Root == null) return null;
+
+            return Root.GetMinimum() as T;
+        }
+
+        /// <summary>
+        /// Get the max of the tree.
+        /// Using the method in the root so it's O(h)
+        /// </summary>
+        /// <returns>minimum</returns>
+        public T GetMax()
+        {
+            if (Root == null) return null;
+
+            return Root.GetMax() as T;
+        }
     }
 }
