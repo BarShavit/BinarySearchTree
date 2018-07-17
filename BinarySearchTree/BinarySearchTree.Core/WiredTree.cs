@@ -32,6 +32,8 @@
                     searchParentNode = null;
             }
 
+            node.Parent = newNodeParent;
+
             // If newNodeParent is null, the tree is empty and
             // it will be the new root
             if (newNodeParent == null)
