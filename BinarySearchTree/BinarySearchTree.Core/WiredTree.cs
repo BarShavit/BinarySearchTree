@@ -45,6 +45,62 @@
                 else
                     newNodeParent.RightChild = node;
             }
+
+            // Wire the new node (which is a leaf) to successor and predecessor
+            node.RightChild = node.GetSuccessor();
+            node.LeftChild = node.GetPredecessor();
+        }
+
+        /// <summary>
+        /// Delete the node from the tree.
+        /// According to the book page 221 it's O(h)
+        /// </summary>
+        /// <param name="node">Node for delete</param>
+        public void Delete(T node)
+        {
+            AbstractNode nodeForRemove, nextNode = null;
+
+            if (!node.HasALeftChild() || !node.HasARightChild())
+                nodeForRemove = node;
+            else
+                nodeForRemove = node.GetSuccessor();
+
+            if (nodeForRemove.HasALeftChild())
+                nextNode = nodeForRemove.LeftChild;
+            else if (nodeForRemove.HasARightChild())
+                nextNode = nodeForRemove.RightChild;
+
+            if (nextNode != null)
+                nextNode.Parent = nodeForRemove;
+
+            if (nodeForRemove.Parent == null)
+                Root = nextNode as T;
+            else
+            {
+                if (nodeForRemove.Id == nodeForRemove.Parent.LeftChild.Id)
+                {
+                    nodeForRemove.Parent.LeftChild = nextNode;
+
+                    // If after this change, the parent gets a "null child"
+                    // instead of the delete node, wire it to predecessor
+                    if (nodeForRemove.Parent.LeftChild == null)
+                        nodeForRemove.Parent.LeftChild = nodeForRemove.Parent.GetPredecessor();
+                }
+                else
+                {
+                    nodeForRemove.Parent.RightChild = nextNode;
+
+                    // If after this change, the parent gets a "null child"
+                    // instead of the delete node, wire it to successor
+                    if (nodeForRemove.Parent.RightChild == null)
+                        nodeForRemove.Parent.RightChild = nodeForRemove.Parent.GetSuccessor();
+                }
+            }
+
+            if (nodeForRemove.Id != node.Id)
+            {
+                node.Clone(nodeForRemove);
+            }
         }
 
         /// <summary>
@@ -84,9 +140,25 @@
         /// <summary>
         /// Get the preccessor.
         /// </summary>
-        public T GetPreccessor(T Node)
+        public T GetPreccessor(T node)
         {
-            return Node.GetPredecessor() as T;
+            return node.GetPredecessor() as T;
+        }
+
+        /// <summary>
+        /// Search the id by the node's method
+        /// </summary>
+        public T Search(T node, int id)
+        {
+            return node.Search(id) as T;
+        }
+
+        /// <summary>
+        /// Search the id by the node's method
+        /// </summary>
+        public T Search(int id)
+        {
+            return Root.Search(id) as T;
         }
     }
 }

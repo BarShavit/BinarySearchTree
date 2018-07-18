@@ -16,6 +16,17 @@
         }
 
         /// <summary>
+        /// Clone the received node's data to this object
+        /// </summary>
+        /// <param name="node">The received node</param>
+        public virtual void Clone(object node)
+        {
+            var castedNode = node as AbstractNode;
+            if (castedNode != null)
+                Id = castedNode.Id;
+        }
+
+        /// <summary>
         /// The node is a leaf only if he doesn't have sons
         /// or if the given son's parent isn't this node
         /// </summary>
@@ -66,13 +77,12 @@
         /// <returns>The successor, if doesn't exist returns null</returns>
         public AbstractNode GetSuccessor()
         {
-            AbstractNode successor = null;
             var currentScan = this;
 
             if (currentScan.RightChild != null)
                 return currentScan.RightChild.GetMinimum();
 
-            successor = currentScan.Parent;
+            var successor = currentScan.Parent;
 
             while(successor != null && currentScan == successor.RightChild)
             {
@@ -90,13 +100,12 @@
         /// <returns>The successor, if doesn't exist returns null</returns>
         public AbstractNode GetPredecessor()
         {
-            AbstractNode predeccessor = null;
             var currentScan = this;
 
             if (currentScan.LeftChild != null)
                 return currentScan.LeftChild.GetMax();
 
-            predeccessor = currentScan.Parent;
+            var predeccessor = currentScan.Parent;
 
             while (predeccessor != null && currentScan == predeccessor.LeftChild)
             {
@@ -105,6 +114,22 @@
             }
 
             return predeccessor;
+        }
+
+        /// <summary>
+        /// Search the node with the id within the subtree of this node
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The node, if doesn't exist - returns null</returns>
+        public AbstractNode Search(int id)
+        {
+            if (Id == id)
+                return this;
+
+            if (id < Id)
+                return HasALeftChild() ? LeftChild.LeftChild.Search(id) : null;
+
+            return HasARightChild() ? RightChild.RightChild.Search(id) : null;
         }
     }
 }

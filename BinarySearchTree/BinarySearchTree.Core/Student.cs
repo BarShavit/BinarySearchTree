@@ -16,5 +16,16 @@
         {
             Name = name;
         }
+
+        public override void Clone(object node)
+        {
+            var castedNode = node as Student;
+
+            if (castedNode != null)
+            {
+                Name = castedNode.Name;
+                base.Clone(node);
+            }
+        }
     }
 }
