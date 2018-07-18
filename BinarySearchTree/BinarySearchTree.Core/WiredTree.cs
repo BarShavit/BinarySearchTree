@@ -70,5 +70,23 @@
 
             return Root.GetMax() as T;
         }
+
+        /// <summary>
+        /// Get the successor of the node
+        /// </summary>
+        /// <param name="node">The node</param>
+        /// <returns>Successor, null if doesn't exist</returns>
+        public T GetSuccessor(T node)
+        {
+            return node.GetSuccessor() as T;
+        }
+
+        /// <summary>
+        /// Get the preccessor.
+        /// </summary>
+        public T GetPreccessor(T Node)
+        {
+            return Node.GetPredecessor() as T;
+        }
     }
 }

@@ -58,5 +58,53 @@
                 temp = temp.RightChild;
             return temp;
         }
+
+        /// <summary>
+        /// Get the successor of this node,
+        /// according to the book it's O(h)
+        /// </summary>
+        /// <returns>The successor, if doesn't exist returns null</returns>
+        public AbstractNode GetSuccessor()
+        {
+            AbstractNode successor = null;
+            var currentScan = this;
+
+            if (currentScan.RightChild != null)
+                return currentScan.RightChild.GetMinimum();
+
+            successor = currentScan.Parent;
+
+            while(successor != null && currentScan == successor.RightChild)
+            {
+                currentScan = successor;
+                successor = successor.Parent;
+            }
+
+            return successor;
+        }
+
+        /// <summary>
+        /// Get the predecessor of this node,
+        /// according to the book it's O(h)
+        /// </summary>
+        /// <returns>The successor, if doesn't exist returns null</returns>
+        public AbstractNode GetPredecessor()
+        {
+            AbstractNode predeccessor = null;
+            var currentScan = this;
+
+            if (currentScan.LeftChild != null)
+                return currentScan.LeftChild.GetMax();
+
+            predeccessor = currentScan.Parent;
+
+            while (predeccessor != null && currentScan == predeccessor.LeftChild)
+            {
+                currentScan = predeccessor;
+                predeccessor = predeccessor.Parent;
+            }
+
+            return predeccessor;
+        }
     }
 }
