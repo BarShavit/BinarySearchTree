@@ -2,18 +2,24 @@
 {
     public class WiredTree<T> where T : AbstractNode
     {
+        public static WiredTree<T> Instance;
         public T Root;
         public T Median;
 
-        private int nodesSmallerThanTheMedian;
-        private int nodesBiggerThanTheMedian;
+        private int _nodesSmallerThanTheMedian;
+        private int _nodesBiggerThanTheMedian;
 
         public WiredTree()
         {
             Root = null;
             Median = null;
-            nodesSmallerThanTheMedian = 0;
-            nodesBiggerThanTheMedian = 0;
+            _nodesSmallerThanTheMedian = 0;
+            _nodesBiggerThanTheMedian = 0;
+        }
+
+        static WiredTree()
+        {
+            Instance = new WiredTree<T>();
         }
 
         /// <summary>
@@ -71,8 +77,11 @@
 
             // If we delete the current median, the counters are already updated
             // so we can update it now.
-            if(node.Id == Median.Id)
+            if (node.Id == Median.Id)
+            {
                 UpdateMedianAfterCountersUpdated();
+                deletedTheOldMedian = true;
+            }
 
             AbstractNode nodeForRemove, nextNode = null;
 
@@ -201,9 +210,9 @@
 
             // Update the counters of nodes bigger than the median and smaller
             if (Median.Id < node.Id)
-                nodesBiggerThanTheMedian++;
+                _nodesBiggerThanTheMedian++;
             else
-                nodesSmallerThanTheMedian++;
+                _nodesSmallerThanTheMedian++;
 
             UpdateMedianAfterCountersUpdated();
         }
@@ -217,9 +226,9 @@
         {
             // Update the counters of nodes bigger than the median and smaller
             if (Median.Id < node.Id)
-                nodesBiggerThanTheMedian--;
+                _nodesBiggerThanTheMedian--;
             else
-                nodesSmallerThanTheMedian--;
+                _nodesSmallerThanTheMedian--;
 
             UpdateMedianAfterCountersUpdated();
         }
@@ -233,19 +242,19 @@
         /// </summary>
         private void UpdateMedianAfterCountersUpdated()
         {
-            if (nodesBiggerThanTheMedian > nodesSmallerThanTheMedian)
+            if (_nodesBiggerThanTheMedian > _nodesSmallerThanTheMedian)
             {
                 Median = Median.GetSuccessor() as T;
-                nodesBiggerThanTheMedian--;
-                nodesSmallerThanTheMedian++;
+                _nodesBiggerThanTheMedian--;
+                _nodesSmallerThanTheMedian++;
                 return;
             }
 
-            if (nodesSmallerThanTheMedian > nodesBiggerThanTheMedian + 1)
+            if (_nodesSmallerThanTheMedian > _nodesBiggerThanTheMedian + 1)
             {
                 Median = Median.GetPredecessor() as T;
-                nodesBiggerThanTheMedian++;
-                nodesSmallerThanTheMedian--;
+                _nodesBiggerThanTheMedian++;
+                _nodesSmallerThanTheMedian--;
             }
         }
 
