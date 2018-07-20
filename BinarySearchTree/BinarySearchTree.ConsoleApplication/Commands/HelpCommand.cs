@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BinarySearchTree.Core;
 
 namespace BinarySearchTree.ConsoleApplication.Commands
 {
-    public class HelpCommand : Command
+    public class HelpCommand<T> : Command<T> where T : AbstractNode
     {
-        public HelpCommand() : base("help", "Get all the supported commands with a description")
+        public HelpCommand(WiredTree<T> tree) : base(tree, "help", "Get all the supported commands with a description",
+            new List<Parameter>())
         {
         }
 
@@ -18,8 +22,19 @@ namespace BinarySearchTree.ConsoleApplication.Commands
             Console.WriteLine("The supported commands are:");
             foreach (var commandsDictionaryValue in CommandsRunner.GetInstance().CommandsDictionary.Values)
             {
-                Console.WriteLine(commandsDictionaryValue.CommandName +
-                                  " - " + commandsDictionaryValue.Description);
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine(commandsDictionaryValue.CommandName);
+                Console.ResetColor();
+                Console.WriteLine(commandsDictionaryValue.Description);
+
+                if (commandsDictionaryValue.Parameters.Any())
+                {
+                    Console.WriteLine("Parameters:");
+                    commandsDictionaryValue.Parameters.ForEach(parameter =>
+                    {
+                        Console.WriteLine("- {0} {1}", parameter.Index, parameter.Name);
+                    });
+                }
             }
         }
     }

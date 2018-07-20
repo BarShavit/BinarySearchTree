@@ -2,7 +2,6 @@
 {
     public class WiredTree<T> where T : AbstractNode
     {
-        public static WiredTree<T> Instance;
         public T Root;
         public T Median;
 
@@ -15,11 +14,6 @@
             Median = null;
             _nodesSmallerThanTheMedian = 0;
             _nodesBiggerThanTheMedian = 0;
-        }
-
-        static WiredTree()
-        {
-            Instance = new WiredTree<T>();
         }
 
         /// <summary>
@@ -73,6 +67,7 @@
         /// <param name="node">Node for delete</param>
         public void Delete(T node)
         {
+            if (node == null) return;
             var deletedTheOldMedian = false;
 
             // If we delete the current median, the counters are already updated
@@ -134,6 +129,19 @@
         }
 
         /// <summary>
+        /// Delete a student from the tree according to the id
+        /// using search to find the student at first.
+        /// </summary>
+        /// <param name="id">The id</param>
+        /// <returns>The student which deleted</returns>
+        public T Delete(int id)
+        {
+            var student = Search(id);
+            Delete(student);
+            return student;
+        }
+
+        /// <summary>
         /// Get the minimum of the tree.
         /// Using the method in the root so it's O(h)
         /// </summary>
@@ -188,7 +196,7 @@
         /// </summary>
         public T Search(int id)
         {
-            return Root.Search(id) as T;
+            return Root != null ? Root.Search(id) as T : null;
         }
 
         #region Median helpers

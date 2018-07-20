@@ -36,14 +36,22 @@
             return !HasALeftChild() && !HasARightChild();
         }
 
+        /// <summary>
+        /// Check if the left son is a real a child
+        /// </summary>
+        /// <returns>true if it's a child, false if there isn't a child or it's a wire</returns>
         public bool HasALeftChild()
         {
-            return LeftChild == null || LeftChild.Parent.Id != Id;
+            return LeftChild != null && LeftChild.Parent != null && LeftChild.Parent.Id == Id;
         }
 
+        /// <summary>
+        /// Check if the right son is a real a child
+        /// </summary>
+        /// <returns>true if it's a child, false if there isn't a child or it's a wire</returns>
         public bool HasARightChild()
         {
-            return RightChild == null || RightChild.Parent.Id != Id;
+            return RightChild != null && RightChild.Parent != null && RightChild.Parent.Id == Id;
         }
 
         /// <summary>
@@ -129,7 +137,7 @@
             if (id < Id)
                 return HasALeftChild() ? LeftChild.LeftChild.Search(id) : null;
 
-            return HasARightChild() ? RightChild.RightChild.Search(id) : null;
+            return HasARightChild() ? RightChild.Search(id) : null;
         }
     }
 }
