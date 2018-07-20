@@ -21,7 +21,7 @@ namespace BinarySearchTree.Core.XMLReader
                     return (T) serializer.Deserialize(reader);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return default(T);
             }

@@ -46,11 +46,14 @@
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\DeleteCommand.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
+    <Compile Include="Commands\InorderTreeWalkCommand.cs" />
     <Compile Include="Commands\InsertCommand.cs" />
     <Compile Include="Commands\LoadStudentsFromXMLCommand.cs" />
     <Compile Include="Commands\MaxCommand.cs" />
     <Compile Include="Commands\MinCommand.cs" />
+    <Compile Include="Commands\PostorderTreeWalkCommand.cs" />
     <Compile Include="Commands\PredecessorCommand.cs" />
+    <Compile Include="Commands\PreorderTreeWalkCommand.cs" />
     <Compile Include="Commands\PrintRelatedNodesCommand.cs" />
     <Compile Include="Commands\RunCommandsFromAFileCommand.cs" />
     <Compile Include="Commands\SearchCommand.cs" />

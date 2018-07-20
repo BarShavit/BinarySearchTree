@@ -1,4 +1,6 @@
-﻿namespace BinarySearchTree.Core
+﻿using System.Collections.Generic;
+
+namespace BinarySearchTree.Core
 {
     public abstract class AbstractNode
     {
@@ -139,5 +141,62 @@
 
             return HasARightChild() ? RightChild.Search(id) : null;
         }
+
+        #region Walks
+
+        /// <summary>
+        /// Preorder tree walk, moving on each node in preorder.
+        /// According to the book O(n)
+        /// </summary>
+        /// <returns>List of the walk according to the order</returns>
+        public List<AbstractNode> PreorderTreeWalk()
+        {
+            var list = new List<AbstractNode> {this};
+
+            if (HasALeftChild())
+                list.AddRange(LeftChild.InorderTreeWalk());
+            if (HasARightChild())
+                list.AddRange(RightChild.InorderTreeWalk());
+
+            return list;
+        }
+
+        /// <summary>
+        /// Inorder tree walk, moving on each node in inorder.
+        /// According to the book O(n)
+        /// </summary>
+        /// <returns>List of the walk according to the order</returns>
+        public List<AbstractNode> InorderTreeWalk()
+        {
+            var list = new List<AbstractNode>();
+
+            if (HasALeftChild())
+                list.AddRange(LeftChild.InorderTreeWalk());
+            list.Add(this);
+            if(HasARightChild())
+                list.AddRange(RightChild.InorderTreeWalk());
+
+            return list;
+        }
+
+        /// <summary>
+        /// Postorder tree walk, moving on each node in postorder.
+        /// According to the book O(n)
+        /// </summary>
+        /// <returns>List of the walk according to the order</returns>
+        public List<AbstractNode> PostorderTreeWalk()
+        {
+            var list = new List<AbstractNode>();
+
+            if (HasALeftChild())
+                list.AddRange(LeftChild.InorderTreeWalk());
+            if (HasARightChild())
+                list.AddRange(RightChild.InorderTreeWalk());
+            list.Add(this);
+
+            return list;
+        }
+
+        #endregion
     }
 }

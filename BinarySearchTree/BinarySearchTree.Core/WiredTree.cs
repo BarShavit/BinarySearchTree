@@ -1,4 +1,7 @@
-﻿namespace BinarySearchTree.Core
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace BinarySearchTree.Core
 {
     public class WiredTree<T> where T : AbstractNode
     {
@@ -43,7 +46,7 @@
                 newNodeParent = searchParentNode;
                 if (node.Id < searchParentNode.Id && searchParentNode.HasALeftChild())
                     searchParentNode = searchParentNode.LeftChild;
-                else if (searchParentNode.HasARightChild())
+                else if (node.Id > searchParentNode.Id && searchParentNode.HasARightChild())
                     searchParentNode = searchParentNode.RightChild;
                 else
                     searchParentNode = null;
@@ -210,6 +213,40 @@
         {
             return Root != null ? Root.Search(id) as T : null;
         }
+
+        #region Walks
+
+        /// <summary>
+        /// Preorder tree walk, moving on each node in preorder.
+        /// According to the book O(n)
+        /// </summary>
+        /// <returns>List of the walk according to the order</returns>
+        public List<T> PreorderTreeWalk()
+        {
+            return Root.PreorderTreeWalk().Select(node => node as T).ToList();
+        }
+
+        /// <summary>
+        /// Inorder tree walk, moving on each node in inorder.
+        /// According to the book O(n)
+        /// </summary>
+        /// <returns>List of the walk according to the order</returns>
+        public List<T> InorderTreeWalk()
+        {
+            return Root.InorderTreeWalk().Select(node => node as T).ToList();
+        }
+
+        /// <summary>
+        /// Postorder tree walk, moving on each node in postorder.
+        /// According to the book O(n)
+        /// </summary>
+        /// <returns>List of the walk according to the order</returns>
+        public List<T> PostorderTreeWalk()
+        {
+            return Root.PostorderTreeWalk().Select(node => node as T).ToList();
+        }
+
+        #endregion
 
         #region Median helpers
 

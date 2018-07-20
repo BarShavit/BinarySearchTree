@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BinarySearchTree.Core;
 
 namespace BinarySearchTree.ConsoleApplication.Commands
@@ -49,6 +50,22 @@ namespace BinarySearchTree.ConsoleApplication.Commands
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(format, parameters);
+            Console.ResetColor();
+        }
+
+        protected void PrintChainList(List<object> list)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            list.ForEach(node =>
+            {
+                if (node != list.Last())
+                    Console.Write(node + " => ");
+                else
+                {
+                    Console.Write(node + ".");
+                    Console.WriteLine();
+                }
+            });
             Console.ResetColor();
         }
 
