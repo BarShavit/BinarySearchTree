@@ -52,6 +52,7 @@
     <Compile Include="Commands\MinCommand.cs" />
     <Compile Include="Commands\PredecessorCommand.cs" />
     <Compile Include="Commands\PrintRelatedNodesCommand.cs" />
+    <Compile Include="Commands\RunCommandsFromAFileCommand.cs" />
     <Compile Include="Commands\SearchCommand.cs" />
     <Compile Include="Commands\SuccessorCommand.cs" />
     <Compile Include="Program.cs" />

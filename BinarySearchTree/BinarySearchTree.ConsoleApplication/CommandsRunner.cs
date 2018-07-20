@@ -26,7 +26,8 @@ namespace BinarySearchTree.ConsoleApplication
                 { "max", new MaxCommand<Student>(tree) },
                 { "min", new MinCommand<Student>(tree) },
                 { "printRelatedNodes", new PrintRelatedNodesCommand<Student>(tree) },
-                { "loadStudentsFromXml", new LoadStudentsFromXmlCommand<Student>(tree) }
+                { "loadStudentsFromXml", new LoadStudentsFromXmlCommand<Student>(tree) },
+                { "runCommandsFromFile", new RunCommandsFromAFileCommand<Student>(tree) }
             };
         }
 
@@ -53,7 +54,7 @@ namespace BinarySearchTree.ConsoleApplication
 
         public void HandleCommand(string command)
         {
-            if (command != null)
+            if (!string.IsNullOrEmpty(command))
             {
                 var splitedCommand = command.Split(' ');
 

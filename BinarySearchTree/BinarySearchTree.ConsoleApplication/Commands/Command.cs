@@ -90,6 +90,11 @@ namespace BinarySearchTree.ConsoleApplication.Commands
             return int.Parse(parameters[0]);
         }
 
+        protected string GetPath(params string[] parameters)
+        {
+            return string.Join(" ", parameters);
+        }
+
         #endregion
     }
 }

@@ -39,10 +39,5 @@ namespace BinarySearchTree.ConsoleApplication.Commands
 
             WriteSuccess("The file loaded successfully.");
         }
-
-        public string GetPath(params string[] parameters)
-        {
-            return string.Join(" ", parameters);
-        }
     }
 }
