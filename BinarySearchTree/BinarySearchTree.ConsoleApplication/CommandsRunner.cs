@@ -10,22 +10,23 @@ namespace BinarySearchTree.ConsoleApplication
     {
         private static readonly CommandsRunner Instance;
 
-        private readonly WiredTree<Student> _tree;
         public readonly Dictionary<string, Command<Student>> CommandsDictionary;
 
         private CommandsRunner()
         {
-            _tree = new WiredTree<Student>();
+            var tree = new WiredTree<Student>();
             CommandsDictionary = new Dictionary<string, Command<Student>>
             {
-                { "help", new HelpCommand<Student>(_tree) },
-                { "insert", new InsertCommand<Student>(_tree) },
-                { "remove", new DeleteCommand<Student>(_tree) },
-                { "search", new SearchCommand<Student>(_tree) },
-                { "successor", new SuccessorCommand<Student>(_tree) },
-                { "predecessor", new PredecessorCommand<Student>(_tree) },
-                { "max", new MaxCommand<Student>(_tree) },
-                { "min", new MinCommand<Student>(_tree) }
+                { "help", new HelpCommand<Student>(tree) },
+                { "insert", new InsertCommand<Student>(tree) },
+                { "remove", new DeleteCommand<Student>(tree) },
+                { "search", new SearchCommand<Student>(tree) },
+                { "successor", new SuccessorCommand<Student>(tree) },
+                { "predecessor", new PredecessorCommand<Student>(tree) },
+                { "max", new MaxCommand<Student>(tree) },
+                { "min", new MinCommand<Student>(tree) },
+                { "printRelatedNodes", new PrintRelatedNodesCommand<Student>(tree) },
+                { "loadStudentsFromXml", new LoadStudentsFromXmlCommand<Student>(tree) }
             };
         }
 

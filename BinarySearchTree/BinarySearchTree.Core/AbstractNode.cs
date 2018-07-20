@@ -135,7 +135,7 @@
                 return this;
 
             if (id < Id)
-                return HasALeftChild() ? LeftChild.LeftChild.Search(id) : null;
+                return HasALeftChild() ? LeftChild.Search(id) : null;
 
             return HasARightChild() ? RightChild.Search(id) : null;
         }

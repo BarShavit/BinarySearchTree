@@ -10,6 +10,16 @@
 
         public WiredTree()
         {
+            ResetTree();
+        }
+
+        /// <summary>
+        /// Delete the root and median
+        /// reset counters
+        /// start from scratch
+        /// </summary>
+        public void ResetTree()
+        {
             Root = null;
             Median = null;
             _nodesSmallerThanTheMedian = 0;
@@ -70,6 +80,8 @@
             if (node == null) return;
             var deletedTheOldMedian = false;
 
+            UpdateWiresRelatedToRemovedNode(node);
+
             // If we delete the current median, the counters are already updated
             // so we can update it now.
             if (node.Id == Median.Id)
@@ -91,7 +103,7 @@
                 nextNode = nodeForRemove.RightChild;
 
             if (nextNode != null)
-                nextNode.Parent = nodeForRemove;
+                nextNode.Parent = nodeForRemove.Parent;
 
             if (nodeForRemove.Parent == null)
                 Root = nextNode as T;
@@ -263,6 +275,32 @@
                 Median = Median.GetPredecessor() as T;
                 _nodesBiggerThanTheMedian++;
                 _nodesSmallerThanTheMedian--;
+            }
+        }
+
+        #endregion
+
+        #region Delete helpers
+        
+
+        /// <summary>
+        /// When we remove a node, we check if his successor / predecessor
+        /// has a wire to him. If yes, we update the wire to the node's predecessor
+        /// or successor
+        /// </summary>
+        /// <param name="node">The removed node</param>
+        private void UpdateWiresRelatedToRemovedNode(T node)
+        {
+            var successor = node.GetSuccessor();
+            if (successor != null && !successor.HasALeftChild() && successor.LeftChild == node)
+            {
+                successor.LeftChild = node.GetPredecessor();
+            }
+
+            var predecessor = node.GetPredecessor();
+            if (predecessor != null && !predecessor.HasARightChild() && predecessor.RightChild == node)
+            {
+                predecessor.LeftChild = node.GetSuccessor();
             }
         }
 

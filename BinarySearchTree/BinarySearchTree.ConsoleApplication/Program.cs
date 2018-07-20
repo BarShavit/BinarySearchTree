@@ -6,6 +6,7 @@ namespace BinarySearchTree.ConsoleApplication
     {
         static void Main()
         {
+
             Console.WriteLine("Hello, write \"help\" for options.");
 
             CommandsRunner.GetInstance().Run();
