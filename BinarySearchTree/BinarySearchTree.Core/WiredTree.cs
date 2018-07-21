@@ -37,7 +37,7 @@ namespace BinarySearchTree.Core
         public void Insert(T node)
         {
             if (node == null) return;
-            
+
             AbstractNode newNodeParent = null;
             var searchParentNode = Root as AbstractNode;
 
@@ -89,7 +89,7 @@ namespace BinarySearchTree.Core
             // so we can update it now.
             if (node.Id == Median.Id)
             {
-                UpdateMedianAfterCountersUpdated();
+                UpdateMedianAfterMedianDelete();
                 deletedTheOldMedian = true;
             }
 
@@ -152,8 +152,12 @@ namespace BinarySearchTree.Core
         public T Delete(int id)
         {
             var student = Search(id);
+
+            var saveStudent = new Student(0, "");
+            saveStudent.Clone(student);
+
             Delete(student);
-            return student;
+            return saveStudent as T;
         }
 
         /// <summary>
@@ -259,7 +263,7 @@ namespace BinarySearchTree.Core
         {
             // if the median is null, this node is the only node of the tree
             // so it will be the median
-            if(Median == null)
+            if (Median == null)
             {
                 Median = node;
                 return;
@@ -315,10 +319,28 @@ namespace BinarySearchTree.Core
             }
         }
 
+        /// <summary>
+        /// When we remove the median, we need to get the new median first
+        /// if there are more smaller students from the median, the new median will
+        /// be the predecessor, else it will be the successor
+        /// </summary>
+        private void UpdateMedianAfterMedianDelete()
+        {
+            if (_nodesSmallerThanTheMedian > _nodesBiggerThanTheMedian)
+            {
+                Median = Median.GetPredecessor() as T;
+                _nodesSmallerThanTheMedian--;
+                return;
+            }
+
+            Median = Median.GetSuccessor() as T;
+            _nodesBiggerThanTheMedian--;
+        }
+
         #endregion
 
         #region Delete helpers
-        
+
 
         /// <summary>
         /// When we remove a node, we check if his successor / predecessor
@@ -329,15 +351,16 @@ namespace BinarySearchTree.Core
         private void UpdateWiresRelatedToRemovedNode(T node)
         {
             var successor = node.GetSuccessor();
-            if (successor != null && !successor.HasALeftChild() && successor.LeftChild == node)
+            if (successor != null && !successor.HasALeftChild() && successor.LeftChild.Id == node.Id)
             {
                 successor.LeftChild = node.GetPredecessor();
             }
 
             var predecessor = node.GetPredecessor();
-            if (predecessor != null && !predecessor.HasARightChild() && predecessor.RightChild == node)
+            if (predecessor != null && !predecessor.HasARightChild() && 
+                predecessor.RightChild.Id == node.Id)
             {
-                predecessor.LeftChild = node.GetSuccessor();
+                predecessor.RightChild = node.GetSuccessor();
             }
         }
 

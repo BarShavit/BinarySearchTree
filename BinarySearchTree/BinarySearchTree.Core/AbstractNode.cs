@@ -112,7 +112,7 @@ namespace BinarySearchTree.Core
         {
             var currentScan = this;
 
-            if (currentScan.LeftChild != null)
+            if (currentScan.HasALeftChild())
                 return currentScan.LeftChild.GetMax();
 
             var predeccessor = currentScan.Parent;

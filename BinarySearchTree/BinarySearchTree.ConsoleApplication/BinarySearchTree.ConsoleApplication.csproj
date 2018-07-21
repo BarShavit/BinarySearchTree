@@ -50,6 +50,7 @@
     <Compile Include="Commands\InsertCommand.cs" />
     <Compile Include="Commands\LoadStudentsFromXMLCommand.cs" />
     <Compile Include="Commands\MaxCommand.cs" />
+    <Compile Include="Commands\MedianCommand.cs" />
     <Compile Include="Commands\MinCommand.cs" />
     <Compile Include="Commands\PostorderTreeWalkCommand.cs" />
     <Compile Include="Commands\PredecessorCommand.cs" />

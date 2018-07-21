@@ -6,7 +6,7 @@ namespace BinarySearchTree.ConsoleApplication.Commands
     public class PrintRelatedNodesCommand<T> : Command<T> where T : AbstractNode
     {
         public PrintRelatedNodesCommand(WiredTree<T> tree) :
-            base(tree, "printSons", "Print the sons of a node, including a symbol for wires.",
+            base(tree, "printRelatedNodes", "Print the sons of a node, including a symbol for wires.",
                 new List<Parameter>{new Parameter("0", "id")})
         {
         }

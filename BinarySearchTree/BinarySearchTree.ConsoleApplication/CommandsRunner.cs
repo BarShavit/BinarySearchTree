@@ -26,6 +26,7 @@ namespace BinarySearchTree.ConsoleApplication
                 { "postorderWalk", new PostorderTreeWalkCommand<Student>(tree) },
                 { "successor", new SuccessorCommand<Student>(tree) },
                 { "predecessor", new PredecessorCommand<Student>(tree) },
+                { "median", new MedianCommand<Student>(tree) },
                 { "max", new MaxCommand<Student>(tree) },
                 { "min", new MinCommand<Student>(tree) },
                 { "printRelatedNodes", new PrintRelatedNodesCommand<Student>(tree) },
