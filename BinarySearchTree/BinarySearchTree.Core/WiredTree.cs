@@ -75,6 +75,7 @@ namespace BinarySearchTree.Core
 
         /// <summary>
         /// Delete the node from the tree.
+        /// Update the related wires, and update the median.
         /// According to the book page 221 it's O(h)
         /// </summary>
         /// <param name="node">Node for delete</param>

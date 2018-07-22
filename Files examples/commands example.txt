@@ -1,0 +1,15 @@
+insert 20 a
+insert 30 b
+insert 40 c
+insert 41 d
+insert 35 e
+insert 29 f
+insert 28 g
+insert 10 h
+insert 15 i
+insert 16 j
+insert 14 k
+insert 5 l
+median
+min
+max

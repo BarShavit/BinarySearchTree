@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BinarySearchTree.ConsoleApplication.CommandsRunner">
+    <Position X="21" Y="4" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsCollectionAssociation>
+      <Field Name="CommandsDictionary" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.Parameter" Collapsed="true">
+    <Position X="16.25" Y="4" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.Command&lt;T&gt;" Collapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Field Name="Tree" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="Parameters" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.DeleteCommand&lt;T&gt;" Collapsed="true">
+    <Position X="21.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.HelpCommand&lt;T&gt;" Collapsed="true">
+    <Position X="28.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.InorderTreeWalkCommand&lt;T&gt;" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.InsertCommand&lt;T&gt;" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.LoadStudentsFromXmlCommand&lt;T&gt;" Collapsed="true">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.MaxCommand&lt;T&gt;" Collapsed="true">
+    <Position X="23.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.MedianCommand&lt;T&gt;" Collapsed="true">
+    <Position X="30.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.MinCommand&lt;T&gt;" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.PostorderTreeWalkCommand&lt;T&gt;" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.PredecessorCommand&lt;T&gt;" Collapsed="true">
+    <Position X="17" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.PreorderTreeWalkCommand&lt;T&gt;" Collapsed="true">
+    <Position X="26" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.PrintRelatedNodesCommand&lt;T&gt;" Collapsed="true">
+    <Position X="32.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.RunCommandsFromAFileCommand&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.SearchCommand&lt;T&gt;" Collapsed="true">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.ConsoleApplication.Commands.SuccessorCommand&lt;T&gt;" Collapsed="true">
+    <Position X="19.25" Y="1.75" Width="1.5" />
+    <InheritanceLine Type="BinarySearchTree.ConsoleApplication.Commands.Command&lt;T&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="19.188" Y="3.5" />
+        <Point X="19.188" Y="2.816" />
+        <Point X="20" Y="2.816" />
+        <Point X="20" Y="2.441" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.Core.AbstractNode" Collapsed="true">
+    <Position X="24" Y="5.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.Core.Student" Collapsed="true">
+    <Position X="24" Y="6.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="BinarySearchTree.Core.WiredTree&lt;T&gt;" Collapsed="true">
+    <Position X="26.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
