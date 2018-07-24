@@ -228,7 +228,7 @@ namespace BinarySearchTree.Core
         /// <returns>List of the walk according to the order</returns>
         public List<T> PreorderTreeWalk()
         {
-            return Root.PreorderTreeWalk().Select(node => node as T).ToList();
+            return Root?.PreorderTreeWalk().Select(node => node as T).ToList();
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace BinarySearchTree.Core
         /// <returns>List of the walk according to the order</returns>
         public List<T> InorderTreeWalk()
         {
-            return Root.InorderTreeWalk().Select(node => node as T).ToList();
+            return Root?.InorderTreeWalk().Select(node => node as T).ToList();
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace BinarySearchTree.Core
         /// <returns>List of the walk according to the order</returns>
         public List<T> PostorderTreeWalk()
         {
-            return Root.PostorderTreeWalk().Select(node => node as T).ToList();
+            return Root?.PostorderTreeWalk().Select(node => node as T).ToList();
         }
 
         #endregion

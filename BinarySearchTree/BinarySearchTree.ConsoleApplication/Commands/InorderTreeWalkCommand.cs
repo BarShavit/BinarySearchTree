@@ -18,7 +18,13 @@ namespace BinarySearchTree.ConsoleApplication.Commands
 
         public override void Execute(params string[] parameters)
         {
-            PrintChainList(Tree.InorderTreeWalk().Select(
+            var walk = Tree.InorderTreeWalk();
+            if(walk == null)
+            {
+                WriteWarning("The tree is empty.");
+                return;
+            }
+            PrintChainList(walk.Select(
                 node => node as object).ToList());
         }
     }
