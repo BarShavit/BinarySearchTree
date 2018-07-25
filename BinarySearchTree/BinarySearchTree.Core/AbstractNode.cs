@@ -89,7 +89,7 @@ namespace BinarySearchTree.Core
         {
             var currentScan = this;
 
-            if (currentScan.RightChild != null)
+            if (currentScan.HasARightChild())
                 return currentScan.RightChild.GetMinimum();
 
             var successor = currentScan.Parent;
