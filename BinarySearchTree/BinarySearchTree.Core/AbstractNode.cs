@@ -154,9 +154,9 @@ namespace BinarySearchTree.Core
             var list = new List<AbstractNode> {this};
 
             if (HasALeftChild())
-                list.AddRange(LeftChild.InorderTreeWalk());
+                list.AddRange(LeftChild.PreorderTreeWalk());
             if (HasARightChild())
-                list.AddRange(RightChild.InorderTreeWalk());
+                list.AddRange(RightChild.PreorderTreeWalk());
 
             return list;
         }
@@ -189,9 +189,9 @@ namespace BinarySearchTree.Core
             var list = new List<AbstractNode>();
 
             if (HasALeftChild())
-                list.AddRange(LeftChild.InorderTreeWalk());
+                list.AddRange(LeftChild.PostorderTreeWalk());
             if (HasARightChild())
-                list.AddRange(RightChild.InorderTreeWalk());
+                list.AddRange(RightChild.PostorderTreeWalk());
             list.Add(this);
 
             return list;
